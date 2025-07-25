@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom line-clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+  }
+  
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply bg-black text-white;
+    overflow-x: hidden;
+    padding-top: 0; /* Header will be sticky, no need for padding */
+  }
+  
+  #root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgb(17 24 39); /* bg-gray-900 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Remove gap between header and content */
+  .header-spacer {
+    height: 64px; /* Exact header height (h-16 = 4rem = 64px) */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .btn-primary {
+    @apply bg-transparent text-white font-medium px-8 py-4 rounded-full border border-white transition-all duration-200 hover:bg-white hover:text-black;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent text-white font-medium px-6 py-3 rounded-full border border-white/50 transition-all duration-200 hover:bg-white/10;
+  }
+  
+  .product-card {
+    @apply bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 transition-all duration-200 hover:border-gray-700;
+  }
+  
+  .tag-new {
+    @apply bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-md;
+  }
+  
+  .tag-sale {
+    @apply bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-md;
+  }
+  
+  .hero-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%231a1a1a"/><rect x="100" y="100" width="200" height="600" fill="%232a2a2a"/><rect x="350" y="100" width="200" height="600" fill="%232a2a2a"/><rect x="600" y="100" width="200" height="600" fill="%232a2a2a"/><rect x="850" y="100" width="200" height="600" fill="%232a2a2a"/></svg>');
+    background-size: cover;
+    background-position: center;
+  }
+}
